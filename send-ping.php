@@ -53,7 +53,7 @@ if ( !function_exists( 'pushpress_send_ping' ) ) {
 			$remote_opt['headers']['Content-Type'] = 'application/rss+xml';
 			$remote_opt['headers']['Content-Type'] .= '; charset=' . get_option( 'blog_charset' );
 
-			@load_template( ABSPATH . WPINC . '/feed-rss2.php' );
+			@load_template( ABSPATH . WPINC . '/feed-rss2.php', false );
 		} elseif ( $feed_type == 'atom' ) {
 			do_action( 'pushpress_send_ping_atom' );
 			$feed_url = get_feed_link( 'atom' );
@@ -63,7 +63,7 @@ if ( !function_exists( 'pushpress_send_ping' ) ) {
 			$remote_opt['headers']['Content-Type'] = 'application/atom+xml';
 			$remote_opt['headers']['Content-Type'] .= '; charset=' . get_option( 'blog_charset' );
 
-			@load_template( ABSPATH . WPINC . '/feed-atom.php' );
+			@load_template( ABSPATH . WPINC . '/feed-atom.php', false );
 		}
 
 		$remote_opt['headers']['X-Hub-Self'] = $feed_url;
